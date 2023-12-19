@@ -1,0 +1,72 @@
+{% extends "AppCoder/padre.html" %}
+
+{% block title %}
+    <h2>Registrar usuario</h2>
+{% endblock %}
+
+{% block context %}
+ 
+    <style>
+        .error-list {
+            color: red;
+        }
+    </style>
+ 
+ <body style="background-color: #121212; color: #fff; font-family: Arial, sans-serif;">
+    <div style="width: 400px; margin: 50px auto; background-color: #333; border: 1px solid #555; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 5px;">
+<form action="{% url 'registrar' %}" method="POST" style="display: flex; flex-direction: column;">
+    {% csrf_token %}
+
+    {% for field in form %}
+        
+            {{ field.label_tag }}
+            {{ field }}
+
+            {% if field.errors %}
+                <ul class="error-list">
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        
+    {% endfor %}
+<br>
+    <input type="submit" value="Iniciar sesión" style="background-color: #1877f2; color: #fff; padding: 10px; border: none; border-radius: 3px; cursor: pointer;">
+
+</form>
+
+</div>
+<br>
+<br>
+<br>
+</body>
+
+<style>
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] 
+    {
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #555;
+        border-radius: 3px;
+        background-color: #444;
+        color: #fff;
+    }
+
+    input[type="submit"] {
+        background-color: #1976D2;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #135e96;
+    }
+</style>
+ 
+{% endblock %}

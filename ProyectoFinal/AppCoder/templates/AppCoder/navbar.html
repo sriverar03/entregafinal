@@ -1,0 +1,59 @@
+
+
+<div id="container">
+    
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" >
+                     
+        <ul>
+            <li><h3 class="mt-2 me-5 ms-4">Blog</h3>  </li>
+            <li><a href="{% url 'inicio' %}">Inicio</a></li>
+           
+            <li><a href="#">Persona</a>
+            <!-- First Tier Drop Down -->
+            <ul>
+                <li><a href=" ">Crear persona</a></li>
+                <li><a href=" ">Buscar persona</a></li>
+                <li><a href=" ">Listar personas</a></li>
+            	<!-- Second Tier Drop Down -->
+               
+            </ul>
+            </li>
+
+            <li><a href="#">País</a>
+                <!-- First Tier Drop Down -->
+                <ul>
+                <li><a href=" ">Crear paises</a></li>
+                <li><a href=" ">Buscar paises</a></li>
+                <li><a href=" ">Listar paises</a></li>
+                    <!-- Second Tier Drop Down -->
+                   
+                </ul>
+                </li>
+
+                <li><a href="#">Cursos</a>
+                    <!-- First Tier Drop Down -->
+                    <ul>
+                    <li><a href=" ">Crear cursos</a></li>
+                    <li><a href=" ">Buscar cursos</a></li>
+                    <li><a href=" ">Listar cursos</a></li>
+                        <!-- Second Tier Drop Down -->
+                       
+                    </ul>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                    <span class="navbar-text">{{ user.username }}</span>
+                    <li> <a href="{% url 'logout' %}">Logout</a></li>
+                  <!-- <a class="navbar-brand" href="{#% url 'AppCoder:logout' %#}">Logout</a> -->
+                {% else %}
+                <li> <a href="{% url 'loguear' %}">Login</a></li>
+                <li> <a href="{% url 'registrar' %}">Registrarse</a></li>
+
+         
+                  
+                {% endif %}
+         
+        </ul>
+    </nav>
+  
+</div>
